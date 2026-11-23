@@ -1,1 +1,204 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رسالة حب ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Tahoma,Arial;
+ color:white;
+ text-align:center;
+ min-height:100vh;
+ background:linear-gradient(135deg,#330019,#a50049,#ff668c);
+ overflow-x:hidden;
+}
+
+.heart{
+ position:fixed;
+ bottom:-30px;
+ font-size:24px;
+ animation:float 8s linear infinite;
+ pointer-events:none;
+ z-index:0;
+}
+
+@keyframes float{
+ 0%{transform:translateY(0) rotate(0);opacity:0}
+ 20%{opacity:1}
+ 100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+.container{
+ position:relative;
+ z-index:1;
+ max-width:450px;
+ margin:45px auto;
+ padding:25px;
+}
+
+.card{
+ background:#ffffff20;
+ border:1px solid #ffffff40;
+ border-radius:25px;
+ padding:25px;
+ box-shadow:0 10px 35px #0004;
+ backdrop-filter:blur(10px);
+}
+
+h1{font-size:32px;color:#ffe1e9}
+p{line-height:2}
+
+input{
+ width:85%;
+ padding:14px;
+ border:0;
+ border-radius:12px;
+ text-align:center;
+ font-size:18px;
+}
+
+button{
+ border:0;
+ background:#ff174f;
+ color:white;
+ padding:13px 25px;
+ border-radius:25px;
+ font-size:17px;
+ margin:12px;
+ cursor:pointer;
+}
+
+button:hover{background:#c9003c}
+
+#content{display:none}
+
+.photos{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+ margin:20px 0;
+}
+
+.photos img{
+ width:100%;
+ height:190px;
+ object-fit:cover;
+ border-radius:18px;
+ border:3px solid #ffffff70;
+}
+
+.message{
+ background:#ffffff20;
+ border-radius:20px;
+ padding:18px;
+ margin-top:20px;
+ font-size:19px;
+ line-height:2.2;
+}
+
+audio{
+ width:100%;
+ margin-top:15px;
+}
+
+.small{font-size:14px;color:#ffe1e9}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card" id="login">
+<h1>❤️ رسالة حب ❤️</h1>
+<p>فيه مفاجأة حلوة مستنياك</p>
+<p>اكتب الباسورد وافتح رسالتك 💌</p>
+
+<input type="password" id="password"
+placeholder="اكتب الباسورد">
+
+<br>
+<button onclick="openLove()">افتح الرسالة ❤️</button>
+<p id="error"></p>
+</div>
+
+<div class="card" id="content">
+
+<h1>بحبك ❤️</h1>
+<p>أنت أجمل حاجة حصلت في حياتي 🥹</p>
+
+<div class="photos">
+<img src="photo1.jpg" alt="صورتنا الأولى">
+<img src="photo2.jpg" alt="صورتنا الثانية">
+</div>
+
+<div class="message">
+<h2>رسالة ليك 💌</h2>
+<p>
+مش عارف أقولك إيه غير إن وجودك في حياتي
+بيخلّي كل حاجة أحلى ❤️
+<br>
+كل يوم بيعدّي بحبك أكتر،
+ونفسي أفضل جنبك العمر كله.
+<br>
+أنت مش مجرد شخص بحبه،
+أنت أجمل حكاية في عمري ❤️
+<br>
+ربنا يخليك ليا وما يحرمنيش منك.
+</p>
+<h2>بحبك قد الدنيا ❤️</h2>
+</div>
+
+<h2>🎵 موسيقى الحب 🎵</h2>
+<p class="small">موسيقى رامي صبري</p>
+
+<audio id="music" controls loop>
+<source src="ramy-sabry.mp3" type="audio/mpeg">
+</audio>
+
+<p class="small">اضغط تشغيل للاستماع للموسيقى ❤️</p>
+
+</div>
+</div>
+
+<script>
+function openLove(){
+ const pass=document.getElementById("password").value;
+
+ if(pass==="123"){
+  document.getElementById("login").style.display="none";
+  document.getElementById("content").style.display="block";
+
+  document.getElementById("music").play().catch(()=>{
+    console.log("اضغط تشغيل الموسيقى");
+  });
+
+ }else{
+  document.getElementById("error").innerText=
+  "الباسورد غلط، حاول تاني ❤️";
+ }
+}
+
+// قلوب متحركة
+function createHeart(){
+ const heart=document.createElement("div");
+ heart.className="heart";
+ heart.innerHTML=["❤️","💕","💗","💖"][Math.floor(Math.random()*4)];
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.animationDuration=(5+Math.random()*5)+"s";
+ document.body.appendChild(heart);
+
+ setTimeout(()=>heart.remove(),10000);
+}
+setInterval(createHeart,500);
+</script>
+
+</body>
+</html>
+
